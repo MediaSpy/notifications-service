@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  mongodb:
+    image: mongo:5
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: notifications
+    volumes:
+      - ../../nosql:/docker-entrypoint-initdb.d
+    ports:
+      - 27017:27017
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - 5672:5672
+      - 15672:15672
+  redis:
+    image: redis:6-alpine
+    ports:
+      - 6379:6379

@@ -1,0 +1,19 @@
+app:
+  port: 3333
+auth:
+  jwt:
+    secret: 6VQenahGWGS6fILs9BZSOJ6imzCxh3AH
+services:
+  mongodb:
+    host: localhost
+    port: 27017
+    database: notifications
+    username: root
+    password: password
+  rabbitmq:
+    host: localhost
+    port: 5672
+  redis:
+    host: localhost
+    port: 6379
+    prefix: 'notifications:'

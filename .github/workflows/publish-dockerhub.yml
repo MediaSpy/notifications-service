@@ -1,0 +1,31 @@
+name: DockerHub Image
+on:
+  release:
+    types: [created]
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Login to Docker
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Get package.json version
+        id: get_package_json_version
+        run: |
+          content=`cat ./package.json`
+          content="${content//'%'/'%25'}"
+          content="${content//$'\n'/'%0A'}"
+          content="${content//$'\r'/'%0D'}"
+          echo "::set-output name=packageJson::$content"
+      - uses: docker/build-push-action@v2
+        name: Publish Docker image
+        with:
+          context: .
+          push: true
+          tags: mediaspy/notifications-service:${{fromJson(steps.get_package_json_version.outputs.packageJson).version}}

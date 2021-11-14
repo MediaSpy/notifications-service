@@ -1,0 +1,2 @@
+logger:
+  logLevels: ['log', 'error', 'warn', 'debug', 'verbose']

@@ -1,0 +1,25 @@
+name: Lint And Unit Tests
+on:
+  pull_request:
+    branches:
+      - master
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install NodeJS Dependencies
+        run: npm i
+      - name: Run Lint
+        run: npm run lint
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install NodeJS Dependencies
+        run: npm i
+      - name: Run Unit Tests
+        run: npm test
