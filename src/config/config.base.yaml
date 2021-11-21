@@ -1,2 +1,6 @@
+notifications:
+  defaultValues:
+    promotions: true
+    social: true
 logger:
   logLevels: ['log', 'error', 'warn', 'debug', 'verbose']

@@ -21,9 +21,11 @@ import configSchema from '../../config/schema/config.schema';
       useFactory: (configService: ConfigService) => {
         const host = configService.get<string>('services.mongodb.host');
         const port = configService.get<string>('services.mongodb.port');
-        const database = configService.get<string>('services.mongodb.database');
         return {
-          uri: `mongodb://${host}:${port}/${database}`,
+          uri: `mongodb://${host}:${port}`,
+          dbName: configService.get<string>('services.mongodb.database'),
+          user: configService.get<string>('services.mongodb.username'),
+          pass: configService.get<string>('services.mongodb.password'),
         };
       },
       inject: [ConfigService],

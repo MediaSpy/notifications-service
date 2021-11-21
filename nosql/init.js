@@ -1,6 +1,13 @@
 conn = new Mongo();
-db = conn.getDB('notifications');
 
+// db = conn.getDB('admin');
+// db.createUser({
+//   user: process.env.MONGO_INITDB_ROOT_USERNAME,
+//   pwd: process.env.MONGO_INITDB_ROOT_PASSWORD,
+//   roles: ['root'],
+// });
+
+db = conn.getDB('notifications');
 db.templates.insert({
   name: 'hello',
   content:

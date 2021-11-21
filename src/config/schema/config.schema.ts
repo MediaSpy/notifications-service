@@ -1,7 +1,24 @@
 export default {
   type: 'object',
-  required: ['app', 'logger', 'auth', 'services'],
+  required: ['notifications', 'app', 'logger', 'auth', 'services'],
   properties: {
+    notifications: {
+      type: 'object',
+      required: ['defaultValues'],
+      properties: {
+        defaultValues: {
+          type: 'object',
+          properties: {
+            promotions: {
+              type: 'boolean',
+            },
+            social: {
+              type: 'boolean',
+            },
+          },
+        },
+      },
+    },
     app: {
       type: 'object',
       required: ['port'],
