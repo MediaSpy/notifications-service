@@ -4,16 +4,22 @@ export default {
   properties: {
     notifications: {
       type: 'object',
-      required: ['defaultValues'],
+      required: ['email'],
       properties: {
-        defaultValues: {
+        email: {
           type: 'object',
+          required: ['defaultSettings'],
           properties: {
-            promotions: {
-              type: 'boolean',
-            },
-            social: {
-              type: 'boolean',
+            defaultSettings: {
+              type: 'object',
+              properties: {
+                promotions: {
+                  type: 'boolean',
+                },
+                social: {
+                  type: 'boolean',
+                },
+              },
             },
           },
         },

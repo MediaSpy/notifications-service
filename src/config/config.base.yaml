@@ -1,6 +1,7 @@
 notifications:
-  defaultValues:
-    promotions: true
-    social: true
+  email:
+    defaultSettings:
+      promotions: true
+      social: true
 logger:
   logLevels: ['log', 'error', 'warn', 'debug', 'verbose']
